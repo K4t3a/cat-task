@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cats Information</title>
+  <style>
+    .cat-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .cat-card {
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      width: 300px;
+      color: white;
+      background: linear-gradient(245.59deg,#73c1e6 0%,#38b6f2 28.53%,#1268c9 75.52%);
+    }
+
+   .cat-img {
+            width: 100%;
+            height: 200px; 
+            object-fit: cover; 
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+  
+  </style>
+</head>
+
+<body>
+  <div class="cat-container" id="cat-container"></div>
+
+  <script>
+    const cats = [
+      {
+        "name": "Lara",
+        "img_link": "https://www.friendforpet.ru/api/sites/default/files/2021-09/167200DD-A44F-4845-8D4D-ACCFC180165A.jpeg",
+        "age": 8,
+        "rate": 7,
+        "favourite": false,
+        "description": "Lara is a Scottish Fold and has osteochondrodysplasia. Lara is calm, very affectionate and sociable. The disease has no cure and no special care is needed.",
+        "id": 1
+      },
+      {
+        "name": "Bazil",
+        "img_link": "https://www.friendforpet.ru/api/sites/default/files/2022-01/064AEBCB-45EC-4CE7-AB13-C65F10F00B7B.jpeg",
+        "age": 2,
+        "rate": 10,
+        "favourite": false,
+        "description": "Attentive, active and affectionate. Loves to play, roll a ball, and purr on a blanket next to people! Well mannered, litter box trained. Vaccinated, has a veterinary passport.",
+        "id": 2
+      },
+       {
+        "name": "Rish",
+        "img_link": "https://www.friendforpet.ru/api/sites/default/files/2022-01/_DM34706.JPG",
+        "age": 1,
+        "rate": 10,
+        "favourite": true,
+        "description": "Rish loves ladders and ropes. A very active and friendly cat. Rish is completely healthy, vaccinated, neutered. Uses a tray and is very careful.",
+        "id": 3
+      },
+      {
+        "name": "Ellie",
+        "img_link": "https://www.friendforpet.ru/api/sites/default/files/2022-01/1_25.jpg",
+        "age": 4,
+        "rate": 8,
+        "favourite": false,
+        "description": "Ellie has a soft and kind character. He loves all kinds of delicacies and tasty food. Doesn't trust people, it will take time to become her friend. Trained to the tray and scratching post.",
+        "id": 4
+      },
+      {
+        "name": "Charlie",
+        "img_link": "https://www.friendforpet.ru/api/sites/default/files/2022-01/%D0%BB%D0%B5%D0%B2%D0%B83_%D0%B0%D0%BB%D0%B5%D0%BA%D1%81.jpg",
+        "age": 1,
+        "rate": 8,
+        "favourite": false,
+        "description": "The black and white young cat philosopher loves to think and be alone. Doesn't trust people yet, not aggressive. Gets along with other animals, is trained to use a tray and scratching post.",
+        "id": 5
+      },
+      {
+        "name": "Stephanie",
+        "img_link": "https://www.friendforpet.ru/api/sites/default/files/2022-01/4_30.jpg",
+        "age": 6,
+        "rate": 9,
+        "favourite": false,
+        "description": "Lovely Stephanie is a touching, good-natured and very, very sociable girl who needs care and love like no other. Trained to the tray and scratching post.",
+        "id": 6
+      },
+      {
+        "name": "Dusya",
+        "img_link": "https://www.friendforpet.ru/api/sites/default/files/2022-02/B1444207-6EE3-4BA4-97F7-2F9666AE2F63.jpeg",
+        "age": 1,
+        "rate": 9,
+        "favourite": false,
+        "description": "Dusenka is about 1 year old, healthy, vaccinated, sterilized. He knows the tray and scratching post very well. Very sociable and gentle, wants constant attention.",
+        "id": 7
+      },
+      {
+        "name": "Bruno",
+        "img_link": "https://www.friendforpet.ru/api/sites/default/files/2022-01/IMG-20211223-WA0049.jpg",
+        "age": 1,
+        "rate": 10,
+        "favourite": false,
+        "description": "Charming active cat Bruno is in constant motion! Charming and affectionate cat. Trained to the litter box, gets along with other cats, vaccinated.",
+        "id": 8
+      },
+      {
+        "name": "Max",
+        "img_link": "https://www.friendforpet.ru/api/sites/default/files/2022-01/%D1%81%D0%B2%D0%B5%D1%82%D0%BB%D1%8F%D1%87%D0%BE%D0%BA4_%D0%B0%D0%BB%D0%B5%D0%BA%D1%81.jpg",
+        "age": 1,
+        "rate": 9,
+        "favourite": true,
+        "description": "A little timid, but very kind and gentle cat Firefly. Trained to use the tray and scratching post, gets along with children, vaccinated. Will become your good friend.",
+        "id": 9
+      }
+    ];
+
+    const catContainer = document.getElementById('cat-container');
+
+    cats.forEach(cat => {
+      const catCard = document.createElement('div');
+      catCard.classList.add('cat-card');
+
+      const catImg = document.createElement('img');
+      catImg.src = cat.img_link;
+      catImg.alt = cat.name;
+      catImg.classList.add('cat-img');
+      catCard.appendChild(catImg);
+
+      const catName = document.createElement('h3');
+      catName.textContent = cat.name;
+      catCard.appendChild(catName);
+
+      const catAge = document.createElement('p');
+      catAge.textContent = `Age: ${cat.age} years`;
+      catCard.appendChild(catAge);
+
+      const catRate = document.createElement('p');
+      catRate.textContent = `Rate: ${cat.rate}`;
+      catCard.appendChild(catRate);
+
+      const catDescription = document.createElement('p');
+      catDescription.textContent = cat.description;
+      catCard.appendChild(catDescription);
+
+      catContainer.appendChild(catCard);
+    });
+  </script>
+</body>
+
+</html>
